@@ -1,0 +1,189 @@
+[
+    {
+        "name": "Ethical Global Fund",
+        "holdings": [
+            {
+                "name": "Fund B",
+                "weight": 0.2
+            },
+            {
+                "name": "Fund C",
+                "weight": 0.5
+            },
+            {
+                "name": "Fund D",
+                "weight": 0.15
+            },
+            {
+                "name": "GrapeCo",
+                "weight": 0.15
+            }
+        ]
+    },
+    {
+        "name": "Fund B",
+        "holdings": [
+            {
+                "name": "MicroFit",
+                "weight": 0.5
+            },
+            {
+                "name": "GreenCo",
+                "weight": 0.3
+            },
+            {
+                "name": "GrapeCo",
+                "weight": 0.2
+            }
+        ]
+    },
+    {
+        "name": "Fund C",
+        "holdings": [
+            {
+                "name": "Fund D",
+                "weight": 0.4
+            },
+            {
+                "name": "GrapeCo",
+                "weight": 0.3
+            },
+            {
+                "name": "GoldenGadgets",
+                "weight": 0.3
+            }
+        ]
+    },
+    {
+        "name": "Fund D",
+        "holdings": [
+            {
+                "name": "Fund E",
+                "weight": 0.1
+            },
+            {
+                "name": "SpaceY",
+                "weight": 0.3
+            },
+            {
+                "name": "BeanzRUS",
+                "weight": 0.6
+            }
+        ]
+    },
+    {
+        "name": "Fund E",
+        "holdings": [
+            {
+                "name": "GrapeCo",
+                "weight": 0.2
+            },
+            {
+                "name": "SolarCorp",
+                "weight": 0.8
+            }
+        ]
+    },
+    {
+        "name": "Fund F",
+        "holdings": [
+            {
+                "name": "TechSolutions",
+                "weight": 0.4
+            },
+            {
+                "name": "Fund D",
+                "weight": 0.3
+            },
+            {
+                "name": "BlueOcean",
+                "weight": 0.3
+            }
+        ]
+    },
+    {
+        "name": "Fund G",
+        "holdings": [
+            {
+                "name": "Ethical Global Fund",
+                "weight": 0.3
+            },
+            {
+                "name": "CloudWave",
+                "weight": 0.2
+            },
+            {
+                "name": "GreenEnergyCo",
+                "weight": 0.5
+            }
+        ]
+    },
+    {
+        "name": "Fund H",
+        "holdings": [
+            {
+                "name": "Fund F",
+                "weight": 0.25
+            },
+            {
+                "name": "GoldenGadgets",
+                "weight": 0.35
+            },
+            {
+                "name": "SpaceY",
+                "weight": 0.4
+            }
+        ]
+    },
+    {
+        "name": "Fund I",
+        "holdings": [
+            {
+                "name": "Fund H",
+                "weight": 0.5
+            },
+            {
+                "name": "SkyTech",
+                "weight": 0.3
+            },
+            {
+                "name": "BeanzRUS",
+                "weight": 0.2
+            }
+        ]
+    },
+    {
+        "name": "Fund J",
+        "holdings": [
+            {
+                "name": "Fund G",
+                "weight": 0.6
+            },
+            {
+                "name": "Fund I",
+                "weight": 0.2
+            },
+            {
+                "name": "MicroFit",
+                "weight": 0.2
+            }
+        ]
+    },
+    {
+        "name": "Fund K",
+        "holdings": [
+            {
+                "name": "Fund J",
+                "weight": 0.4
+            },
+            {
+                "name": "SolarCorp",
+                "weight": 0.3
+            },
+            {
+                "name": "GreenCo",
+                "weight": 0.3
+            }
+        ]
+    }
+]

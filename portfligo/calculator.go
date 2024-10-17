@@ -5,29 +5,38 @@ import (
 	"portfoli-go/domain"
 )
 
-var runningTotal float64 = float64(0)
-
 type CalculatorConfig struct {
 	RootHoldingName string
 }
 
-func (c CalculatorConfig) Calculate(holdingsIndex map[string]*domain.Holding) {
+func (c CalculatorConfig) Calculate(holdingsIndex map[string]*domain.Holding) (map[string]domain.PortfolioLine, error) {
 	rootHolding, ok := holdingsIndex[c.RootHoldingName]
 	if !ok {
-		panic("root holding not found")
+		return nil, fmt.Errorf("root holding not found in holdings index")
 	}
 
-	step(rootHolding, float64(1))
+	portfolio := map[string]domain.PortfolioLine{}
+
+	step(rootHolding, float64(1), portfolio)
+
+	return portfolio, nil
 }
 
-func step(stepHolding *domain.Holding, stepWeight float64) {
+func step(stepHolding *domain.Holding, stepWeight float64, portfolio map[string]domain.PortfolioLine) {
 	if len(stepHolding.Holdings) == 0 {
-		runningTotal += stepWeight
-		fmt.Printf("Company `%s` Weight `%f` (total: `%f`)\n", stepHolding.Name, stepWeight, runningTotal)
+		lineItem, ok := portfolio[stepHolding.Name]
+		if !ok {
+			lineItem = domain.PortfolioLine{
+				Name: stepHolding.Name,
+			}
+		}
+		lineItem.Weight += stepWeight
+		portfolio[stepHolding.Name] = lineItem
+
 		return
 	}
 
 	for _, h := range stepHolding.Holdings {
-		step(h.Holding, stepWeight*h.Weight)
+		step(h.Holding, stepWeight*h.Weight, portfolio)
 	}
 }

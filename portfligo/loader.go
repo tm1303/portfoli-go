@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"encoding/json"
 	"fmt"
-	"os"
 	"portfoli-go/domain"
 )
 
@@ -17,22 +16,21 @@ type holdingInput struct {
 	SubHoldings []subHoldingInput `json:"holdings"`
 }
 
-func Load(reader *bufio.Reader, output map[string]*domain.Holding) {
+func Load(reader *bufio.Reader) (map[string]*domain.Holding, error){
 
 	decoder := json.NewDecoder(reader)
 	_, err := decoder.Token()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error reading start of array: %v\n", err)
-		return
+		return nil, fmt.Errorf("Error reading start of array: %w", err)
 	}
 
+	output := map[string]*domain.Holding{}
 	for decoder.More() {
 		var item holdingInput
 
 		err := decoder.Decode(&item)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error decoding JSON object: %v\n", err)
-			return
+			return nil, fmt.Errorf ("Error decoding JSON object: %w", err)
 		}
 
 		h, ok := output[item.Name]
@@ -54,10 +52,5 @@ func Load(reader *bufio.Reader, output map[string]*domain.Holding) {
 		}
 	}
 
-	_, err = decoder.Token()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error reading end of array: %v\n", err)
-		return
-	}
-
+	return output, nil
 }
