@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"portfoli-go/portfligo"
+	"portfoli-go/portfoligo"
 )
 
 // Assumtion:
@@ -19,40 +19,21 @@ import (
 
 var bufferSize int = 1024
 
-var isDebug bool = os.Getenv("ENV") == "DEBUG"
-
-var targetCompanies []string = []string{}
-var rootHoldingName string 
-var inputFilename string
-
-func initArgs(isDebug bool) {
-
-	if isDebug {
-		inputFilename = os.Args[1]
-		rootHoldingName = os.Args[2]
-		targetCompanies = os.Args[3:]
-		return
-	}
-	inputFilename = os.Args[0]
-	rootHoldingName = os.Args[1]
-	targetCompanies = os.Args[2:]
-}
+var targetCompanies []string = os.Args[3:]
+var rootHoldingName string = os.Args[2]
+var inputFilename string = os.Args[1]
 
 func main() {
 
-	initArgs(true)
-
-	fmt.Println(inputFilename)
-	fmt.Println(rootHoldingName)
-	fmt.Println(targetCompanies)
+	//TODO: validate input args
 
 	calcConfig := portfoligo.CalculatorConfig{
 		RootHoldingName: rootHoldingName,
 	}
-	formatter := portfoligo.FormatterConfig{
-		Target:           os.Stdout,
-		HighlightHolding: targetCompanies,
-	}
+	formatter := portfoligo.NewOrderedFormatter(
+		portfoligo.FileWriterConfig{FileTarget: os.Stdout},
+		targetCompanies,
+	)
 
 	p := portfoligo.NewPortfoligo(
 		calcConfig,

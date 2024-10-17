@@ -7,13 +7,19 @@ import (
 	"portfoli-go/domain"
 )
 
+//easyjson:json
 type subHoldingInput struct {
 	Name   string  `json:"name"`
 	Weight float64 `json:"weight"`
 }
+//easyjson:json
 type holdingInput struct {
 	Name        string            `json:"name"`
 	SubHoldings []subHoldingInput `json:"holdings"`
+}
+
+type PortfolioRead interface{
+	
 }
 
 func Load(reader *bufio.Reader) (map[string]*domain.Holding, error){
